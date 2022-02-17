@@ -14,23 +14,22 @@ public class Bs3Application{
 		SpringApplication.run(Bs3Application.class, args);
 	}
 
-	@Bean
 	@PostConstruct
 	public void primera() {
 		System.out.println("Hola desde la clase inicial");
 	}
 
 	@Bean
-	public CommandLineRunner segunda() {
+	public CommandLineRunner segunda() throws Exception {
 		return args -> {
 			System.out.println("Hola desde la clase secundaria");
 		};
 	}
 
 	@Bean
-	public CommandLineRunner tercera() {
-		return args -> {
-			System.out.println("Soy la tercera clase");
-		};
+	public void tercera() throws Exception {
+		ClaseTercera ct = new ClaseTercera();
+
+		ct.run("Hola nueva clase");
 	}
 }
